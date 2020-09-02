@@ -25,3 +25,18 @@ n = """
 # Find the thirteen adjacent digits in the 1000-digit number that have the greatest product. What is the value of this product?
 # =============================================================================
 
+n =[char for char in n if char != '\n']
+lim = len(n)
+adj = 13
+i = 0
+maxprod = 0
+while i+adj < lim:
+    if '0' not in n[i:i+adj]:
+        prod = 1
+        for char in n[i:i+adj]:
+            prod = prod*int(char)
+        if prod > maxprod:
+            maxprod = prod
+    i += 1
+
+print(maxprod)
