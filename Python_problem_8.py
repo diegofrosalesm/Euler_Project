@@ -25,6 +25,17 @@ n = """
 # Find the thirteen adjacent digits in the 1000-digit number that have the greatest product. What is the value of this product?
 # =============================================================================
 
+# =============================================================================
+# Solución:
+#     
+# Se pasa el número dado como una string y se limpia eliminando los saltos de línea, esta nueva lista n contiene todos los números que conforman el problema
+# se obtiene el tamaño de n (lim) y la cantidad de dígitos adjacentes a evaluar (adj)
+# el máximo producto (maxprod) inicial se toma como 0
+# 
+# Se comienza a interar desde los índices [0, adj), y se van subiendo el valor de cada extremo del intervalo por 1 hasta llegar a al límite (no más números por evaluar en n)
+# si existe un 0 en ese rango de n estudiado de longitud adj, se omite el cálculo ya que será siempre 0
+# si el producto hallado (prod) es mayor que el maxprod hallado hasta el momento, se sustituye maxprod por el valor de prod y se sigue buscando
+# =============================================================================
 n =[char for char in n if char != '\n']
 lim = len(n)
 adj = 13
@@ -39,4 +50,4 @@ while i+adj < lim:
             maxprod = prod
     i += 1
 
-print(maxprod)
+print("El resultado es: {}".format(maxprod))
